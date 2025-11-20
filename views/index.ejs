@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/7a0886bfdb.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/main.css" />
+    <title>Weather App</title>
+  </head>
+
+  <body>
+    <main class="container">
+      <h1>Weather Check</h1>
+
+      <form action="/weather" method="post" class="search-box" novalidate>
+        <div>
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="city" name="city" class="city" />
+        </div>
+        <button type="submit" class="search-btn">Submit</button>
+      </form>
+
+      <% if (locals.error) { %>
+      <p style="color: red; margin-top: 20px">Hata: <%= locals.error %></p>
+      <% } %> <% if(locals.weather){ %>
+      <article class="weather-content">
+        <div class="head-title">
+          <p><%= new Date().toLocaleDateString("tr-TR") %></p>
+          <h2><%= weather.name %></h2>
+        </div>
+
+        <div class="daily-weather">
+          <div class="daily-weather_weather">
+            <img
+              src="https://openweathermap.org/img/wn/<%= weather.weather[0].icon %>@2x.png"
+              alt="Hava Durumu İkonu"
+              class="weather-image"
+            />
+            <div>
+              <h2><%= weather.main.temp.toFixed(0) %>°</h2>
+              <p><%= weather.weather[0].description %></p>
+            </div>
+          </div>
+
+          <div class="daily-weather_content">
+            <div>
+              <i class="fa-solid fa-wind icon"></i>
+              <p><%= weather.wind.speed.toFixed(1) %>m/s</p>
+            </div>
+            <div>
+              <i class="fa-solid fa-droplet icon"></i>
+              <p><%= weather.main.humidity %>%</p>
+            </div>
+            <div>
+              <i class="fa-regular fa-cloud icon"></i>
+              <p><%= weather.clouds.all %>%</p>
+            </div>
+          </div>
+        </div>
+      </article>
+      <% } %>
+    </main>
+  </body>
+</html>
