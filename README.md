@@ -1,96 +1,96 @@
-# ☁️ HAVA DURUMU KONTROL UYGULAMASI (Weather Check App)
+# ☁️ WEATHER CHECK APP: A Minimalist Weather Platform
 
-**Node.js**, **Express.js** ve **EJS** ile geliştirilmiş, kullanıcıdan alınan şehir adına göre anlık hava durumu verilerini **OpenWeatherMap API** üzerinden çeken minimalist bir Server-Side Rendering (SSR) web uygulamasıdır.
-
----
-
-## 📋 İçindekiler (Table of Contents)
-
-- [Genel Bakış](#✨-genel-bakış)
-- [Kurulum ve Çalıştırma](#⚙️-kurulum-ve-Çalıştırma)
-- [Teknik Detaylar](#💻-teknik-detaylar)
-  - [Teknolojiler](#🛠️-teknolojiler)
-  - [Rotalar (Routing)](#🌐-rotalar-routing)
-  - [Veri İşleme ve Hata Yönetimi](#📊-veri-İşleme-ve-hata-yönetimi)
-- [Gelecek İyileştirmeler](#🚀-gelecek-İyileştirmeler)
-- [İletişim](#📫-İletişim)
+A minimalist Server-Side Rendering (SSR) web application developed using **Node.js**, **Express.js**, and **EJS**, which fetches real-time weather data based on the city name entered by the user via the **OpenWeatherMap API**.
 
 ---
 
-## ✨ Genel Bakış
+## 📋 Table of Contents
 
-Bu proje, temel sunucu tarafı renderlama (SSR) ve üçüncü taraf API entegrasyonu becerilerini göstermeye odaklanmıştır. Uygulama, arama çubuğuna girilen şehrin anlık hava durumunu çekerek, metrikleri (sıcaklık, rüzgar hızı, nem, bulutluluk) kullanıcı dostu bir arayüzde sunar.
-
-* **Mimari:** Node.js ve Express ile hızlı API çağrısı ve EJS ile dinamik sayfa oluşturma.
-* **Tasarım:** Veri okunurluğunu artıran temiz, ikon tabanlı bir arayüze sahiptir.
+- [Overview](#✨-overview)
+- [Setup & Installation](#⚙️-setup--installation)
+- [Technical Details](#💻-technical-details)
+  - [Tech Stack](#🛠️-tech-stack)
+  - [Routing](#🌐-routing)
+  - [Data Processing and Error Handling](#📊-data-processing-and-error-handling)
+- [Future Improvements](#🚀-future-improvements)
+- [Contact](#📫-contact)
 
 ---
 
-## ⚙️ Kurulum ve Çalıştırma
+## ✨ Overview
 
-Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
+This project focuses on demonstrating fundamental Server-Side Rendering (SSR) and third-party API integration skills. The application retrieves current weather data for a user-input city and presents metrics (temperature, wind speed, humidity, cloudiness) in a clean, user-friendly interface.
 
-1.  **Gereksinimler:** Node.js ve npm'in kurulu olduğundan emin olun.
-2.  **Repo'yu Klonlayın:**
+* **Architecture:** Fast API calls using Node.js and Express, with dynamic page generation via EJS.
+* **Design:** Features a clean, icon-based interface that enhances data readability.
+
+---
+
+## ⚙️ Setup & Installation
+
+Follow these steps to get the project running on your local machine:
+
+1.  **Prerequisites:** Ensure you have Node.js and npm installed.
+2.  **Clone the Repository:**
     ```bash
-    git clone [Proje GitHub Adresi Buraya Eklenecek]
+    git clone [Insert Project GitHub Address Here]
     cd weather-check-app
     ```
-3.  **Bağımlılıkları Yükleyin:**
+3.  **Install Dependencies:**
     ```bash
     npm install
     ```
-4.  **API Anahtarını Ayarlayın:** Projenizin ana dizininde **`.env`** adında bir dosya oluşturun ve OpenWeatherMap API anahtarınızı buraya ekleyin:
+4.  **Configure API Key:** Create a file named **`.env`** in your project's root directory and add your OpenWeatherMap API key:
     ```
-    APIKey="[SİZİN_OPENWEATHERMAP_ANAHTARINIZ]"
+    APIKey="[YOUR_OPENWEATHERMAP_KEY]"
     ```
-5.  **Uygulamayı Başlatın:**
+5.  **Start the Application:**
     ```bash
     node index.js
     ```
-6.  Tarayıcınızı açın ve `http://localhost:3000` adresine gidin.
+6.  Open your web browser and navigate to `http://localhost:3000`.
 
 ---
 
-## 💻 Teknik Detaylar
+## 💻 Technical Details
 
-### 🛠️ Teknolojiler (Tech Stack)
+### 🛠️ Tech Stack
 
 * **Backend Runtime:** Node.js
 * **Web Framework:** Express.js
-* **API İstemcisi:** Axios
-* **Şablonlama:** EJS (Embedded JavaScript)
-* **Veri Kaynağı:** OpenWeatherMap API (`/data/2.5/weather` endpoint)
-* **Yapılandırma:** Dotenv (API anahtarını gizlemek için)
-* **Styling & İkon:** Custom CSS ve Font Awesome.
+* **API Client:** Axios
+* **Templating Engine:** EJS (Embedded JavaScript)
+* **Data Source:** OpenWeatherMap API (`/data/2.5/weather` endpoint)
+* **Configuration:** Dotenv (For hiding the API key)
+* **Styling & Icons:** Custom CSS and Font Awesome.
 
-### 🌐 Rotalar (Routing)
+### 🌐 Routing
 
-Uygulamanın temel işlevleri, `index.js` dosyasında tanımlanan aşağıdaki iki rota üzerinden yönetilir:
+The application's core functions are managed via the following two routes defined in `index.js`:
 
-| İşlev | Rota | HTTP Metodu | Açıklama |
+| Function | Route | HTTP Method | Description |
 | :--- | :--- | :--- | :--- |
-| Ana Sayfa | `/` | `GET` | Uygulamanın arama formuyla birlikte başlangıç sayfasını render eder. |
-| Hava Durumu Sorgulama | `/weather` | `POST` | Kullanıcının girdiği şehir adına API isteği yapar, veriyi çeker ve sayfayı günceller. |
+| Home Page | `/` | `GET` | Renders the application's starting page along with the search form. |
+| Weather Query | `/weather` | `POST` | Makes an API request for the city name entered by the user, fetches the data, and updates the page. |
 
-### 📊 Veri İşleme ve Hata Yönetimi
+### 📊 Data Processing and Error Handling
 
-* **Veri Birimleri:** API isteğinde `&units=metric` kullanıldığı için sıcaklık **Celcius (°C)** ve rüzgar hızı **metre/saniye (m/s)** cinsinden gösterilir.
-* **Gösterilen Metrikler:** Şehir adı, sıcaklık, hava durumu açıklaması, rüzgar hızı, nem oranı ve bulutluluk oranı çekilir ve EJS ile ekrana yansıtılır.
-* **Hata Kontrolü:** Şehir girişi yapılmadığında veya API geçersiz bir şehir için veri döndürdüğünde kullanıcıya net bir hata mesajı (`Lütfen şehir giriniz!` veya `Hava durumu bilgisi alınamadı!`) gösterilir.
-
----
-
-## 🚀 Gelecek İyileştirmeler (Future Improvements)
-
-* [ ] Haftalık tahminleri göstermek için API çağrısını (`/forecast` veya `One Call`) entegre etmek.
-* [ ] API isteğindeki `lang=en` parametresini `lang=tr` olarak değiştirerek hava durumu açıklamalarının Türkçe dönmesini sağlamak.
-* [ ] Hava durumu ikon koduna göre (örn. bulutlu, güneşli) arayüz arka planını dinamik olarak değiştiren CSS sınıfları eklemek.
-* [ ] Kullanıcı deneyimini artırmak için arama sırasında yükleniyor (loading) durumu göstermek.
+* **Data Units:** Since `&units=metric` is used in the API request, temperature is displayed in **Celsius (°C)** and wind speed in **meters/second (m/s)**.
+* **Displayed Metrics:** City name, temperature, weather description, wind speed, humidity, and cloudiness are retrieved and reflected on the screen via EJS.
+* **Error Control:** A clear error message is shown to the user (`Please enter a city!` or `Could not retrieve weather information!`) when no city is entered or when the API returns data for an invalid city.
 
 ---
 
-## 📫 İletişim
+## 🚀 Future Improvements
+
+* [ ] Integrate the API call (`/forecast` or `One Call`) to display weekly forecasts.
+* [ ] Change the `lang=en` parameter in the API request to `lang=tr` to display weather descriptions in Turkish.
+* [ ] Add CSS classes to dynamically change the interface background based on the weather icon code (e.g., cloudy, sunny).
+* [ ] Display a loading state during search to improve user experience.
+
+---
+
+## 📫 Contact
 
 **Email:** [ylmzhnf@gmail.com](mailto:ylmzhnf@gmail.com)
 **LinkedIn:** [Hanife Yılmaz](https://www.linkedin.com/in/hanife-y%C4%B1lmaz-b9137b178/)

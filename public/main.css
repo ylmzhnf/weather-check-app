@@ -31,6 +31,7 @@ h2{
 p{
   color: var(--text);
    margin-top:1rem;
+   text-align: center;
 }
   /* Search box */
 .container {
@@ -60,17 +61,29 @@ p{
 .search-box input[name="city"] {
   padding-left: 35px;
   width: 100%;
-  color: var(--text);
+  color: var(--color-bg);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 .search-btn,
 input[name="city"] {
   padding: 0.7rem;
   border: none;
-  border: 2px solid var(--color-bg);
+ 
 }
 .search-btn{
   background-color: var(--color-primary-dark);
-  color: #FFFFFF;
+  color: var(--color-bg);
+   border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: var(--text);
+  font-weight: bold;
+}
+.search-btn:hover{
+  transform: scale(1.02);
+  background-color: var(--color-primary-dark);
+  color: var(--text);
+  cursor: pointer;
 }
 /* CONTENT */
 
@@ -103,15 +116,20 @@ input[name="city"] {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
- 
   width: 100%;
-  padding: 1rem;
+  padding-bottom: 1rem;
 }
 .weather-image{
   height: 150px;
   width: 150px;
 }
 .icon{
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #FFFFFF;
+}
+
+@media (min-width:1000px) {
+    .container{
+      max-width: 800px;
+    }
 }

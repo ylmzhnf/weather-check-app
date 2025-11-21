@@ -24,7 +24,7 @@ app.post("/weather", async (req, res) => {
   if (!city) {
     return res.render("index.ejs", {
       weather: null,
-      error: "Lütfen şehir giriniz!",
+      error: "Please enter a city!",
     });
   }
 
@@ -41,7 +41,7 @@ app.post("/weather", async (req, res) => {
     console.log(error);
     return res.render("index.ejs", {
       weather: null,
-      error: "Hava durumu bilgisi alınamadı!",
+      error: "Could not retrieve weather information!",
     });
   }
 });

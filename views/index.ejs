@@ -26,15 +26,15 @@
           <i class="fa-solid fa-magnifying-glass search-icon"></i>
           <input type="text" id="city" name="city" class="city" />
         </div>
-        <button type="submit" class="search-btn">Submit</button>
+        <button type="submit" class="search-btn">Search</button>
       </form>
 
       <% if (locals.error) { %>
-      <p style="color: red; margin-top: 20px">Hata: <%= locals.error %></p>
+      <p style="color: red; margin-top: 20px">Error: <%= locals.error %></p>
       <% } %> <% if(locals.weather){ %>
       <article class="weather-content">
         <div class="head-title">
-          <p><%= new Date().toLocaleDateString("tr-TR") %></p>
+          <p><%= new Date().toLocaleDateString("en-US") %></p>
           <h2><%= weather.name %></h2>
         </div>
 
@@ -42,7 +42,7 @@
           <div class="daily-weather_weather">
             <img
               src="https://openweathermap.org/img/wn/<%= weather.weather[0].icon %>@2x.png"
-              alt="Hava Durumu İkonu"
+              alt="Weather Icon"
               class="weather-image"
             />
             <div>
